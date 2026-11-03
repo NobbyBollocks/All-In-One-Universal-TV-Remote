@@ -1,0 +1,42 @@
+{
+  "name": "tv-remote-app",
+  "version": "1.0.0",
+  "description": "Control your Android TV from your PC",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:dir": "electron-builder --win --dir"
+  },
+  "dependencies": {
+    "androidtv-remote": "^1.0.10"
+  },
+  "devDependencies": {
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0"
+  },
+  "allowScripts": {
+    "protobufjs@6.11.6": true,
+    "core-js@3.51.0": true,
+    "electron-winstaller@5.4.0": true
+  },
+  "build": {
+    "appId": "com.tvremote.app",
+    "productName": "TV Remote",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "asar": true
+  }
+}

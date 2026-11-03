@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self';" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Remote</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="status">
+        <span id="statusDot" class="dot disconnected"></span>
+        <span id="statusText">Disconnected</span>
+      </div>
+      <div class="conn">
+        <input id="ipInput" type="text" placeholder="TV IP (e.g. 192.168.1.50)" />
+        <button id="connectBtn" class="btn primary">Connect</button>
+        <button id="disconnectBtn" class="btn">Disconnect</button>
+      </div>
+      <div class="scanRow">
+        <button id="scanBtn" class="btn small">Scan network</button>
+        <span id="scanStatus" class="muted"></span>
+      </div>
+    </header>
+
+    <main class="remote">
+      <div class="row topRow">
+        <button class="rbtn power" data-key="KEYCODE_POWER" title="Power">⏻</button>
+        <button class="rbtn" data-key="KEYCODE_INFO" title="Info">i</button>
+        <button class="rbtn" data-key="KEYCODE_SETTINGS" title="Settings">⚙</button>
+      </div>
+
+      <div class="dpad">
+        <button class="dpad-btn up" data-key="KEYCODE_DPAD_UP">▲</button>
+        <button class="dpad-btn left" data-key="KEYCODE_DPAD_LEFT">◀</button>
+        <button class="dpad-btn center" data-key="KEYCODE_DPAD_CENTER">OK</button>
+        <button class="dpad-btn right" data-key="KEYCODE_DPAD_RIGHT">▶</button>
+        <button class="dpad-btn down" data-key="KEYCODE_DPAD_DOWN">▼</button>
+      </div>
+
+      <div class="row">
+        <button class="rbtn" data-key="KEYCODE_BACK">Back</button>
+        <button class="rbtn" data-key="KEYCODE_HOME">Home</button>
+        <button class="rbtn" data-key="KEYCODE_MENU">Menu</button>
+      </div>
+
+      <div class="row">
+        <button class="rbtn" data-key="KEYCODE_VOLUME_UP">Vol +</button>
+        <button class="rbtn" data-key="KEYCODE_VOLUME_DOWN">Vol -</button>
+        <button class="rbtn" data-key="KEYCODE_VOLUME_MUTE">Mute</button>
+      </div>
+
+      <div class="row">
+        <button class="rbtn" data-key="KEYCODE_CHANNEL_UP">Ch +</button>
+        <button class="rbtn" data-key="KEYCODE_CHANNEL_DOWN">Ch -</button>
+        <button class="rbtn" data-key="KEYCODE_TV_INPUT" title="Input">Input</button>
+      </div>
+
+      <div class="row media">
+        <button class="rbtn" data-key="KEYCODE_MEDIA_REWIND">⏮</button>
+        <button class="rbtn" data-key="KEYCODE_MEDIA_PLAY">▶</button>
+        <button class="rbtn" data-key="KEYCODE_MEDIA_PAUSE">⏸</button>
+        <button class="rbtn" data-key="KEYCODE_MEDIA_STOP">⏹</button>
+        <button class="rbtn" data-key="KEYCODE_MEDIA_FAST_FORWARD">⏭</button>
+      </div>
+
+      <div class="numpad">
+        <button class="rbtn num" data-key="KEYCODE_1">1</button>
+        <button class="rbtn num" data-key="KEYCODE_2">2</button>
+        <button class="rbtn num" data-key="KEYCODE_3">3</button>
+        <button class="rbtn num" data-key="KEYCODE_4">4</button>
+        <button class="rbtn num" data-key="KEYCODE_5">5</button>
+        <button class="rbtn num" data-key="KEYCODE_6">6</button>
+        <button class="rbtn num" data-key="KEYCODE_7">7</button>
+        <button class="rbtn num" data-key="KEYCODE_8">8</button>
+        <button class="rbtn num" data-key="KEYCODE_9">9</button>
+        <button class="rbtn num" data-key="KEYCODE_0">0</button>
+      </div>
+
+      <div class="row colours">
+        <button class="rbtn colour red" data-key="KEYCODE_RED">Red</button>
+        <button class="rbtn colour green" data-key="KEYCODE_GREEN">Green</button>
+        <button class="rbtn colour yellow" data-key="KEYCODE_YELLOW">Yellow</button>
+        <button class="rbtn colour blue" data-key="KEYCODE_BLUE">Blue</button>
+      </div>
+      <div class="row">
+        <button class="rbtn" data-key="KEYCODE_GUIDE">Guide</button>
+      </div>
+      <div class="apps">
+        <button class="rbtn app" data-applink="https://www.youtube.com">YouTube</button>
+        <button class="rbtn app" data-applink="https://www.netflix.com">Netflix</button>
+        <button class="rbtn app" data-applink="">Prime</button>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <span id="extraInfo" class="muted"></span>
+    </footer>
+  </div>
+
+  <!-- Pairing modal -->
+  <div id="pairModal" class="modal hidden">
+    <div class="modalCard">
+      <h3>Pairing required</h3>
+      <p>A 6-character hex code is shown on your TV. Enter it below:</p>
+      <input id="pairCode" type="text" placeholder="1234" />
+      <div class="modalActions">
+        <button id="pairSubmit" class="btn primary">Submit</button>
+        <button id="pairCancel" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scan results modal -->
+  <div id="scanModal" class="modal hidden">
+    <div class="modalCard wide">
+      <h3>Discovered TVs</h3>
+      <div id="scanResults"></div>
+      <div class="modalActions">
+        <button id="scanClose" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

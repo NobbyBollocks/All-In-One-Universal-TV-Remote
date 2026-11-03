@@ -1,0 +1,67 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f1115;
+  color: #e6e6e6;
+}
+.app { padding: 12px; }
+.top { background: #1a1d24; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+.status { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 600; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.connected { background: #3ddc84; box-shadow: 0 0 8px #3ddc84; }
+.dot.disconnected { background: #ff5252; }
+.dot.connecting { background: #ffb74d; }
+.conn { display: flex; gap: 6px; margin-bottom: 6px; }
+.conn input { flex: 1; padding: 8px; border-radius: 8px; border: 1px solid #2a2f3a; background: #0f1115; color: #fff; }
+.scanRow { display: flex; align-items: center; gap: 8px; }
+.muted { color: #9aa0a6; font-size: 12px; }
+
+.btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #2a2f3a; background: #232733; color: #fff; cursor: pointer; }
+.btn.primary { background: #2962ff; border-color: #2962ff; }
+.btn.small { padding: 4px 8px; font-size: 12px; }
+.btn:hover { filter: brightness(1.1); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.remote { background: #1a1d24; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.topRow { justify-content: space-between; }
+
+.rbtn {
+  min-width: 56px; height: 44px; border-radius: 10px; border: 1px solid #2a2f3a;
+  background: #232733; color: #fff; cursor: pointer; font-size: 14px;
+}
+.rbtn:hover { background: #2e3342; }
+.rbtn.power { background: #c62828; border-color: #c62828; }
+.rbtn.num { width: 44px; height: 44px; }
+
+.dpad { position: relative; width: 180px; height: 180px; margin: 0 auto; }
+.dpad-btn { position: absolute; width: 56px; height: 56px; border-radius: 10px; border: 1px solid #2a2f3a; background: #232733; color: #fff; cursor: pointer; font-size: 16px; }
+.dpad-btn.up { top: 0; left: 62px; }
+.dpad-btn.down { bottom: 0; left: 62px; }
+.dpad-btn.left { top: 62px; left: 0; }
+.dpad-btn.right { top: 62px; right: 0; }
+.dpad-btn.center { top: 62px; left: 62px; background: #2962ff; border-color: #2962ff; font-weight: 700; }
+
+.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 180px; margin: 0 auto; }
+.apps { display: flex; gap: 8px; justify-content: center; }
+
+.foot { margin-top: 8px; text-align: center; }
+
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; }
+.modal.hidden { display: none; }
+.modalCard { background: #1a1d24; padding: 20px; border-radius: 12px; width: 320px; }
+.modalCard.wide { width: 400px; max-height: 70vh; overflow: auto; }
+.modalCard h3 { margin-top: 0; }
+.modalCard input { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #2a2f3a; background: #0f1115; color: #fff; margin: 8px 0; }
+.modalActions { display: flex; gap: 8px; justify-content: flex-end; }
+
+.scanItem { padding: 8px; border-bottom: 1px solid #2a2f3a; cursor: pointer; }
+.scanItem:hover { background: #232733; }
+
+.colours { gap: 6px; }
+.rbtn.colour { color: #fff; }
+.rbtn.colour.red { background: #c0392b; }
+.rbtn.colour.green { background: #27ae60; }
+.rbtn.colour.yellow { background: #f1c40f; color: #222; }
+.rbtn.colour.blue { background: #2980b9; }
